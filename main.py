@@ -1,5 +1,5 @@
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
-from pprint import pprint
+# from pprint import pprint
 
 from sources.sources import get_age, get_excel
 from http.server import HTTPServer, SimpleHTTPRequestHandler
@@ -17,7 +17,7 @@ rendered_page = template.render(
     wines=get_excel(),
 )
 
-pprint(get_excel())
+# pprint(get_excel())
 
 with open('index.html', 'w', encoding="utf8") as file:
     file.write(rendered_page)

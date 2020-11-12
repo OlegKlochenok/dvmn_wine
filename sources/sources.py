@@ -3,14 +3,13 @@ import datetime
 
 import pandas
 
-wine_excel_data = pandas.read_excel('./sources/wine.xlsx').to_dict(orient='records')
-
 
 def get_excel():
+    excel_data = pandas.read_excel('./sources/wine.xlsx').to_dict(orient='records')
     result = collections.defaultdict(list)
-    for i in wine_excel_data:
+    for i in excel_data:
         result[i['Категория']].append(i)
-    return result
+    return collections.OrderedDict(sorted(result.items(), key=lambda t: t[0]))
 
 
 def get_age():
