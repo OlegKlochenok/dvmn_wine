@@ -1,6 +1,9 @@
 venv/
 .idea/
+.replit
+index.html
 test.ipynb
 .ipynb_checkpoints/
-sources/__pycache__/
-sources/__init__.py
+/sources/
+!/sources/sources.py
+!/sources/wine.xlsx
