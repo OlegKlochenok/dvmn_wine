@@ -5,35 +5,39 @@ import os
 import pandas
 
 
-def update_file_excel():
-    old_path = './sources/wine.xlsx'
+def get_path_excel_file(path):
     parser = argparse.ArgumentParser(
         description="""
-                     Если вы не меняли файл wine.xlsx, или изменили его в папке source проекта, 
-                     запустите сайт командой 
+                     Если вы не меняли файл wine.xlsx, или изменили его
+                     в папке source проекта, запустите сайт командой
                      `python3 main.py`
-                     Если вы создали новый файл excel, укажите путь к файлу в команде запуска: 
+                     Если вы создали новый файл excel, укажите путь к файлу
+                     в команде запуска:
                      `python3 main.py -p ./путь/к/файлу.xlsx`
-                     Новый файл excel будет автоматически сохранен в папке source проекта под 
-                     именем wine.xlsx для использования по умолчанию.
+                     Новый файл excel будет автоматически сохранен в папке
+                     source проекта под именем wine.xlsx для использования
+                     по умолчанию.
                      Перейдите на сайт по адресу http://127.0.0.1:8000.
         """
     )
     parser.add_argument('-p', '--path_excel',
-                        default=old_path,
-                        help='полный путь к excel-файлу с данными для сайта в виде: "./путь/к/файлу"',
+                        default=path,
+                        help='полный путь к excel-файлу с данными для сайта '
+                             'в виде: "./путь/к/файлу"',
                         type=str)
     args = parser.parse_args()
     new_path = args.path_excel
 
     if os.path.exists(new_path):
-        os.replace(new_path, old_path)
+        os.replace(new_path, path)
 
-    return old_path
+    return path
 
 
-def transform_excel_into_products_list():
-    excel_data = pandas.read_excel(update_file_excel(), keep_default_na=False).to_dict(orient='records')
+def transform_excel_into_products_list(path_excel_file):
+    excel_data = pandas.read_excel(
+        get_path_excel_file(path_excel_file),
+        keep_default_na=False).to_dict(orient='records')
 
     products_list = collections.defaultdict(list)
     for data in excel_data:

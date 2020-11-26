@@ -12,10 +12,11 @@ env = Environment(
 )
 
 template = env.get_template('template.html')
+path_excel_file = './sources/wine.xlsx'
 
 rendered_page = template.render(
     age_company=count_age_company(),
-    products_list=transform_excel_into_products_list(),
+    products_list=transform_excel_into_products_list(path_excel_file),
 )
 
 with open('index.html', 'w', encoding="utf8") as file:
