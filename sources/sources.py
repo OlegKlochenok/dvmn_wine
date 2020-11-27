@@ -7,24 +7,19 @@ import pandas
 
 def get_path_excel_file(path):
     parser = argparse.ArgumentParser(
-        description="""
-                     Если вы не меняли файл wine.xlsx, или изменили его
-                     в папке source проекта, запустите сайт командой
-                     `python3 main.py`
-                     Если вы создали новый файл excel, укажите путь к файлу
-                     в команде запуска:
-                     `python3 main.py -p ./путь/к/файлу.xlsx`
-                     Новый файл excel будет автоматически сохранен в папке
-                     source проекта под именем wine.xlsx для использования
-                     по умолчанию.
-                     Перейдите на сайт по адресу http://127.0.0.1:8000.
+        description=
+        """Запуск сайта: команда `python3 main.py`.
+        
+        Если вы не меняли файл wine.xlsx, или изменили его
+        в папке source проекта, запустите сайт командой `python3 main.py`.
+        Если вы создали новый файл excel, укажите путь к файлу в команде 
+        запуска: `python3 main.py -p ./путь/к/файлу.xlsx`.
+        Новый файл excel будет автоматически сохранен в папке source 
+        проекта под именем wine.xlsx для использования по умолчанию.
+        Перейдите на сайт по адресу http://127.0.0.1:8000.
         """
     )
-    parser.add_argument('-p', '--path_excel',
-                        default=path,
-                        help='полный путь к excel-файлу с данными для сайта '
-                             'в виде: "./путь/к/файлу"',
-                        type=str)
+    parser.add_argument('-p', '--path_excel', default=path, type=str)
     args = parser.parse_args()
     new_path = args.path_excel
 
