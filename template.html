@@ -107,27 +107,27 @@
         </div>
       </div>
       <div class="row">
-        {% for rank, wine_list in showcase %}
+        {% for product_category, products in products_list %}
           <div class="col-12 section-title text-center mb-5">
-            <h2 class="d-block">{{ rank }}</h2>
+            <h2 class="d-block">{{ product_category }}</h2>
           </div>
-            {% for wine in wine_list %}
+            {% for product in products %}
               <div class="col-lg-4 mb-5 col-md-6">
                 <div class="wine_v_1 text-center pb-4 pt-5">
-                  <img src=images/{{ wine.Картинка }} alt="Image" class="img-fluid">
-                  {% if wine.Акция %}
+                  <img src=images/{{ product.Картинка }} alt="Image" class="img-fluid">
+                  {% if product.Акция %}
                     <img src="assets/profitable.png"
                          style="width:10rem;height: 10rem;position:absolute;right: -20px;top: -20px;">
                   {% endif %}
                   <div>
-                    <h3 class="heading mt-3 mb-3 text-dark">{{ wine.Название }}</h3>
-                    {% if wine.Сорт %}
+                    <h3 class="heading mt-3 mb-3 text-dark">{{ product.Название }}</h3>
+                    {% if product.Сорт %}
                       <p>
-                        Сорт винограда - {{ wine.Сорт }}<br/>
+                        Сорт винограда - {{ product.Сорт }}<br/>
                       </p>
                     {% endif %}
                     <p>
-                      <span class="price">{{ wine.Цена }} р.</span>
+                      <span class="price">{{ product.Цена }} р.</span>
                     </p>
                   </div>
                 </div>
